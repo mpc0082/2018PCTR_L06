@@ -13,8 +13,8 @@ public class Ball {
 		ImageIcon ii = new ImageIcon(this.getClass().getResource(Ball));
 		image = ii.getImage();
 		
-		IMG_TAM_X = 162;
-		IMG_TAM_Y = 172;
+		IMG_TAM_X = ii.getIconWidth();
+		IMG_TAM_Y = ii.getIconHeight();
 
 		
 		x = Billiards.Width/4-16;
