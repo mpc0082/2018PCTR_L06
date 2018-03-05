@@ -13,7 +13,6 @@ public class Ball {
 		ImageIcon ii = new ImageIcon(this.getClass().getResource(Ball));
 		image = ii.getImage();
 		
-		//TODO Depend of image size
 		IMG_TAM_X = 1024;
 		IMG_TAM_Y = 1024;
 
@@ -36,7 +35,10 @@ public class Ball {
 		y += dy;
 		
 		reflect();
-		
+		assert x <= Board.RIGHTBOARD : "Se sale de los bordes";
+		assert x >= Board.LEFTBOARD : "Se sale de los bordes";
+		assert x <= Board.BOTTOMBOARD : "Se sale de los bordes";
+		assert x >= Board.TOPBOARD : "Se sale de los bordes";
 		//TODO Check postcondition
 	}
 
