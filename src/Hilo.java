@@ -11,10 +11,18 @@ public class Hilo implements Runnable {
 
 	@Override
 	public void run() {
-		while (true) {
+		try {
+		while (!Thread.currentThread().isInterrupted()) {
 			ball.move();
 			board.repaint();
+			
+				Thread.sleep(10);
 		}
-	}
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Hilo parado");
+			}
+		}
+	
 
 }
