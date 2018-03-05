@@ -20,6 +20,7 @@ public class Billiards extends JFrame {
 
 	private final int N_BALL = 9;
 	private Ball[] balls;
+	private Thread[] hilos;
 
 	public Billiards() {
 
@@ -52,18 +53,24 @@ public class Billiards extends JFrame {
 	}
 
 	private void initBalls() {
-		balls = new Ball [N_BALL];
-		for (int i = 0; i< balls.length;i++){
-		balls[i]=new Ball();
+		balls = new Ball[N_BALL];
+		for (int i = 0; i < balls.length; i++) {
+			balls[i] = new Ball();
 		}
-		
+
 	}
 
 	private class StartListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Code is executed when start button is pushed
-			initBalls();
+			for (int i = 0; i < balls.length; i++) {
+				hilos[i] = new Thread(new Hilo(balls[i], board));
+			}
+
+			for (int j = 0; j < hilos.length; j++) {
+				hilos[j].start();
+			}
 
 		}
 	}
@@ -72,7 +79,9 @@ public class Billiards extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Code is executed when stop button is pushed
-
+			for (int i = 0;i<hilos.length;i++){
+				hilos[i].interrupt();
+			}
 		}
 	}
 

@@ -35,11 +35,11 @@ public class Ball {
 		y += dy;
 		
 		reflect();
+		
 		assert x <= Board.RIGHTBOARD : "Se sale de los bordes";
 		assert x >= Board.LEFTBOARD : "Se sale de los bordes";
 		assert x <= Board.BOTTOMBOARD : "Se sale de los bordes";
 		assert x >= Board.TOPBOARD : "Se sale de los bordes";
-		//TODO Check postcondition
 	}
 
 	private void reflect() {
